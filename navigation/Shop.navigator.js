@@ -8,6 +8,8 @@ import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen'
 import ProductDetailScreen from '../screens/shop/ProductDetailScreen'
 import CartScreen from '../screens/shop/CartScreen'
 import OrdersScreen from '../screens/shop/OrdersScreen'
+import UserProductsScreen from '../screens/user/UserProductsScreen'
+import EditProductScreen from '../screens/user/EditProductScreen'
 
 import Colors from '../constants/Colors'
 
@@ -35,18 +37,45 @@ const ProductsNavigator = createStackNavigator({
 const OrdersNavigator = createStackNavigator({
     OrdersScreen,
 }, {
+    defaultNavigationOptions,
     navigationOptions: {
         drawerIcon: (drawerConfig) => <Ionicons name="ios-list" size={23} color={drawerConfig.activeTintColor} />
     }
 })
 
+const UserNavigator = createStackNavigator({
+    UserProductsScreen,
+    EditProductScreen,
+}, {
+    defaultNavigationOptions,
+    navigationOptions: {
+        drawerIcon: (drawerConfig) => <Ionicons name="ios-create" size={23} color={drawerConfig.activeTintColor} />
+    },
+})
+
 const ShopNavigator = createDrawerNavigator({
-    ProductsNavigator,
-    OrdersNavigator,
+    ProductsNavigator: {
+        screen: ProductsNavigator,
+        navigationOptions: {
+            title: 'Products',
+        }
+    },
+    OrdersNavigator: {
+        screen: OrdersNavigator,
+        navigationOptions: {
+            title: 'Orders',
+        }
+    },
+    UserNavigator: {
+        screen: UserNavigator,
+        navigationOptions: {
+            title: 'Admin',
+        }
+    },
 }, {
     contentOptions: {
         activeTintColor: Colors.primary,
-    }
+    },
 })
 
 export default createAppContainer(ShopNavigator)

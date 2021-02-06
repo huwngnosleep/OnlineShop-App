@@ -29,7 +29,7 @@ const CartScreen = (props) => {
     return <View style={styles.screen} >
         <View style={styles.summary}>
             <Text style={styles.summaryText}>
-                Total: <Text style={styles.totalPrice}>${cartTotalAmount.toFixed(2)}</Text>
+                Total: <Text style={styles.totalPrice}>${cartTotalAmount === 0 ? cartTotalAmount : cartTotalAmount.toFixed(2)}</Text>
             </Text>
             <Button 
                 color={Colors.secondary} 
@@ -43,6 +43,7 @@ const CartScreen = (props) => {
         <FlatList data={cartItems} 
             keyExtractor={(item) => item.productId}
             renderItem={(itemData) => <CartItem 
+                deletable
                 quantity={itemData.item.quantity} 
                 title={itemData.item.title}
                 amount={itemData.item.sum}

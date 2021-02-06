@@ -1,12 +1,5 @@
 import React from 'react'
-import { 
-    StyleSheet, 
-    View, 
-    ScrollView, 
-    Image,
-    Button,
-    Text,
-} from 'react-native'
+import { StyleSheet, View, ScrollView, Image,Button, Text } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Colors from '../../constants/Colors'

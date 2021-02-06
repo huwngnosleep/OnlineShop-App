@@ -10,10 +10,10 @@ const CartItem = (props) => {
                 <Text style={styles.title}>{props.title}</Text>
             </View>
             <View style={styles.itemData}>
-                <Text style={styles.amount}>{props.amount}</Text>
-                <TouchableOpacity activeOpacity={0.7} style={styles.buttonContainer} onPress={props.onRemove}>
+                <Text style={styles.amount}>${props.amount.toFixed(2)}</Text>
+                {props.deletable && <TouchableOpacity activeOpacity={0.7} style={styles.buttonContainer} onPress={props.onRemove}>
                     <Ionicons name="ios-trash" size={23} color="red"/>
-                </TouchableOpacity>
+                </TouchableOpacity>}
             </View>
         </View>
     )
