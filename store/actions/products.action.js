@@ -84,21 +84,22 @@ export const createProduct = (title, description, imageUrl, price) => {
 }
 
 export const updateProduct = (id, title, description, imageUrl) => {
-    return async (dispatch) => {
-        // await fetch(
-        //     `https://huwngnosleep-onlineshopapp-default-rtdb.firebaseio.com/products/${id}.json`,
-        //     {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify({
-        //             title,
-        //             description,
-        //             imageUrl,
-        //         })
-        //     }
-        // )
+    return async (dispatch, getState) => {
+        const token = getState().auth.token
+        await fetch(
+            `https://huwngnosleep-onlineshopapp-default-rtdb.firebaseio.com/products/${id}.json?auth=${token}`,
+            {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title,
+                    description,
+                    imageUrl,
+                })
+            }
+        )
         dispatch({
             type: UPDATE_PRODUCT,
             productId: id,
