@@ -55,7 +55,7 @@ export const deleteProduct = (productId) => {
 
 export const createProduct = (title, description, imageUrl, price) => {
     return async (dispatch) => {
-        await fetch('https://huwngnosleep-onlineshopapp-default-rtdb.firebaseio.com/products.json', {
+        const response = await fetch('https://huwngnosleep-onlineshopapp-default-rtdb.firebaseio.com/products.json', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
