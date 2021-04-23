@@ -1,5 +1,3 @@
-Online shopping app
-
 Where to buy what you need and sell what others want
 
 Made with React Native, Redux, Firebase database
